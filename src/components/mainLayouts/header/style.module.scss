@@ -1,0 +1,177 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.app-header {
+  width: 100%;
+  max-width: 100%;
+  padding: 49px 0 38px 0;
+
+  @media only screen and (max-width: $laptop) {
+    padding-top: 34px;
+    padding-bottom: 23px;
+  }
+
+  .app-brand {
+    a {
+      display: block;
+      @include fontRem(40, 800, 50);
+      color: $link;
+      text-decoration: none;
+
+      @media only screen and (max-width: $mobile) {
+        @include fontRem(30, 800, 37);
+      }
+    }
+  }
+
+  .app-header-mainpanel {
+    @include flex-center-vert;
+    justify-content: space-between;
+
+    .app-navigation {
+      @media only screen and (max-width: $laptop) {
+        display: none;
+      }
+
+      ul {
+        @include flex-center-vert;
+
+        li {
+          &:not(:last-child) {
+            margin-right: 50px;
+          }
+
+          a {
+            color: $text;
+            @include fontRem(18, 600, 21);
+            position: relative;
+            padding-bottom: 11px;
+            display: inline-block;
+            text-decoration: none;
+
+            &.active {
+              color: $blue;
+              font-weight: 700;
+
+              &:after {
+                content: "";
+                width: 7px;
+                height: 7px;
+                @include absoluteCenter(horizontal);
+                background-color: $blue;
+                bottom: 0;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .user-actions {
+      @include flex-center-vert;
+
+      @media only screen and (max-width: $laptop) {
+        display: none;
+      }
+
+      .language-switcher {
+        @include flex-center-vert;
+        margin-right: 60px;
+
+        ul {
+          @include flex-center-vert;
+
+          li {
+            @include fontRem(16, 600, 19);
+            color: $gray;
+            position: relative;
+            padding-bottom: 11px;
+
+            &:not(:last-child) {
+              margin-right: 15px;
+            }
+
+            &.active {
+              color: $blue;
+
+              &:after {
+                content: "";
+                width: 7px;
+                height: 7px;
+                @include absoluteCenter(horizontal);
+                background-color: $blue;
+                bottom: 0;
+                border-radius: 50%;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+    .header-button {
+      .button-overlay {
+        a {
+          display: inline-block;
+          @include fontRem(16, 700, 20);
+          color: $blue;
+          position: relative;
+          padding-right: 38px;
+          text-decoration: none;
+          z-index: 2;
+
+          &:after {
+            content: "";
+            @include absoluteCenter(vertical);
+            right: 0;
+            width: 61px;
+            height: 61px;
+            background-color: transparent;
+            border: 1px solid #E2E2E2;
+            border-radius: 50%;
+            z-index: -1;
+          }
+
+          &:before {
+            content: " ";
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 8L12 8V6H11V8ZM0 8L11 8V6L0 6L0 8Z' fill='%23388AF3'/%3E%3Cpath d='M7 13L13 7L7 1' stroke='%23388AF3' stroke-width='2'/%3E%3C/svg%3E");
+            width: 13px;
+            height: 12px;
+            @include absoluteCenter(vertical);
+            right: 15px;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+    }
+  }
+
+  .mobile-button {
+    display: none;
+
+    @media only screen and (max-width: $laptop) {
+      display: block;
+    }
+
+    button {
+      @include buttonNulled;
+      @include flex-center-vert;
+
+      .circle {
+        width: 7px;
+        height: 7px;
+        background-color: $blue;
+        border-radius: 50%;
+        display: inline-block;
+
+        &:not(:last-child) {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
